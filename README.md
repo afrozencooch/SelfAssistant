@@ -1,6 +1,32 @@
-# SimpleDotnetApp
+# SelfAssistant
 
-A minimal .NET console application scaffold targeting the latest stable .NET (net8.0).
+[![.NET](https://github.com/afrozencooch/SimpleDotnetApp/actions/workflows/dotnet.yml/badge.svg)](https://github.com/afrozencooch/SimpleDotnetApp/actions)
+
+This repository now contains a minimal backend service (`SelfAssistant.Service`) and a simple WinForms GUI (`SelfAssistant.Gui`) to demonstrate a basic chat flow.
+
+Design notes & constraints:
+- Windows Services run in Session 0 and cannot display interactive UI directly. For that reason this project separates the backend (runs as a service) from the GUI (a WinForms client) which communicates with the service over HTTP on localhost.
+
+Quickstart (run locally for development):
+
+PowerShell (start service host in foreground):
+```powershell
+cd .\Service
+dotnet run
+```
+
+Run the GUI (requires Windows):
+```powershell
+cd ..\Gui
+dotnet run
+```
+
+Install the backend as a Windows Service (production):
+- Publish the Service and register it with `sc.exe` or use `New-Service`/`nssm`. The service listens on `http://localhost:5005` by default.
+
+Notes:
+- The GUI polls `GET /chat` and sends user input to `POST /chat`.
+- This is a minimal scaffold; next steps would be to add message persistence, authentication, and an actual LLM backend.
 
 ## What I created
 
