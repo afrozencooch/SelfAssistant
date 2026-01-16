@@ -11,6 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 // uncomment the line below.
 // builder.Host.UseWindowsService();
 builder.WebHost.UseUrls("http://localhost:5005");
+builder.WebHost.UseUrls("http://localhost:5005");
+// Register CORS so `app.UseCors()` can resolve ICorsService
+builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
+{
+    policy.WithOrigins("http://localhost").AllowAnyMethod().AllowAnyHeader();
+}));
 
 var connFile = Path.Combine(AppContext.BaseDirectory, "selfassistant.db");
 builder.Configuration["Data:Sqlite:File"] = connFile;
