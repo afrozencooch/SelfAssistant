@@ -1,0 +1,25 @@
+# Build artifacts
+bin/
+obj/
+
+# VS and Rider
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# NuGet
+*.nupkg
+packages/
+
+# dotnet watch
+.dotnet-watch
