@@ -6,15 +6,22 @@ ApplicationConfiguration.Initialize();
 var form = new Form { Text = "SelfAssistant", Width = 800, Height = 600 };
 
 var panel = new FlowLayoutPanel { Dock = DockStyle.Fill, AutoScroll = true, FlowDirection = FlowDirection.TopDown, WrapContents = false };
-var input = new TextBox { Dock = DockStyle.Bottom, Height = 30 };
-var send = new Button { Text = "Send", Dock = DockStyle.Bottom, Height = 30 };
+var input = new TextBox { Height = 28, Width = 600, Anchor = AnchorStyles.Left | AnchorStyles.Right };
+var send = new Button { Text = "Send", Width = 80 };
 
-// Layout: controls added top-down; use a container to place input+send at bottom
-var container = new Panel { Dock = DockStyle.Fill };
-container.Controls.Add(panel);
-form.Controls.Add(container);
-form.Controls.Add(send);
-form.Controls.Add(input);
+// Use a TableLayoutPanel to ensure the input area stays visible at the bottom
+var tbl = new TableLayoutPanel { Dock = DockStyle.Fill, RowCount = 2 };
+tbl.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+tbl.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+
+var bottomFlow = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.LeftToRight, Padding = new Padding(6) };
+bottomFlow.Controls.Add(input);
+bottomFlow.Controls.Add(send);
+
+tbl.Controls.Add(panel, 0, 0);
+tbl.Controls.Add(bottomFlow, 0, 1);
+
+form.Controls.Add(tbl);
 
 var http = new HttpClient { BaseAddress = new Uri("http://localhost:5005") };
 
