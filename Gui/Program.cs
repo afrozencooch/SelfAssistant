@@ -1,20 +1,21 @@
 using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing;
 
 ApplicationConfiguration.Initialize();
 var form = new Form { Text = "SelfAssistant", Width = 800, Height = 600 };
 
 var panel = new FlowLayoutPanel { Dock = DockStyle.Fill, AutoScroll = true, FlowDirection = FlowDirection.TopDown, WrapContents = false };
-var input = new TextBox { Height = 28, Width = 600, Anchor = AnchorStyles.Left | AnchorStyles.Right };
-var send = new Button { Text = "Send", Width = 80 };
+var input = new TextBox { Height = 44, Width = 600, Anchor = AnchorStyles.Left | AnchorStyles.Right, Font = new Font("Segoe UI", 10F) };
+var send = new Button { Text = "Send", Width = 100, Height = 44, Font = new Font("Segoe UI", 10F) };
 
 // Use a TableLayoutPanel to ensure the input area stays visible at the bottom
 var tbl = new TableLayoutPanel { Dock = DockStyle.Fill, RowCount = 2 };
 tbl.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-tbl.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+tbl.RowStyles.Add(new RowStyle(SizeType.Absolute, 52F));
 
-var bottomFlow = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.LeftToRight, Padding = new Padding(6) };
+var bottomFlow = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.LeftToRight, Padding = new Padding(8), AutoSize = false };
 bottomFlow.Controls.Add(input);
 bottomFlow.Controls.Add(send);
 
