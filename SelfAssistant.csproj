@@ -5,6 +5,5 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>SelfAssistant</AssemblyName>
-    <RootNamespace>SelfAssistant</RootNamespace>
   </PropertyGroup>
 </Project>

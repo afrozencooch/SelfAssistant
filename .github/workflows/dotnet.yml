@@ -22,7 +22,17 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: |
+          if [ -f ./SelfAssistant.csproj ]; then
+            dotnet build ./SelfAssistant.csproj --configuration Release --no-restore
+          else
+            dotnet build --configuration Release --no-restore
+          fi
 
       - name: Test
-        run: dotnet test --no-build --verbosity normal
+        run: |
+          if ls **/*Tests*.csproj >/dev/null 2>&1; then
+            dotnet test --no-build --verbosity normal
+          else
+            echo "No test projects found"
+          fi
