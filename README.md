@@ -1,6 +1,6 @@
 # SelfAssistant
 
-[![.NET](https://github.com/afrozencooch/SimpleDotnetApp/actions/workflows/dotnet.yml/badge.svg)](https://github.com/afrozencooch/SimpleDotnetApp/actions)
+[![.NET](https://github.com/afrozencooch/SelfAssistant/actions/workflows/dotnet.yml/badge.svg)](https://github.com/afrozencooch/SelfAssistant/actions)
 
 This repository now contains a minimal backend service (`SelfAssistant.Service`) and a simple WinForms GUI (`SelfAssistant.Gui`) to demonstrate a basic chat flow.
 
